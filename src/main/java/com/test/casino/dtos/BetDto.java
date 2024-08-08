@@ -1,20 +1,18 @@
 package com.test.casino.dtos;
 
 import com.test.casino.model.entity.GameType;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class BetDto implements Serializable {
-    private Integer id;
-    private Integer userId;
+    private Long id;
+    private Long userId;
     private GameType gameType;
     private BigDecimal betAmount;
     private Integer result;

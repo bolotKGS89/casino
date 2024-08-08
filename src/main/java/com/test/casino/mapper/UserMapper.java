@@ -9,14 +9,14 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    @Mapping(target = "id", source = "userDto.id")
-    @Mapping(target = "username", source = "userDto.username")
-    @Mapping(target = "balance", source = "userDto.balance")
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "username", source = "username")
+    @Mapping(target = "balance", source = "balance")
     User toUser(UserDto userDto);
 
-    @Mapping(target = "id", source = "user.id")
-    @Mapping(target = "username", source = "user.username")
-    @Mapping(target = "password", source = "user.password")
-    @Mapping(target = "balance", source = "user.balance")
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "username", source = "username")
+    @Mapping(target = "password", source = "password")
+    @Mapping(target = "balance", source = "balance")
     UserDto toUserDto(User user);
 }

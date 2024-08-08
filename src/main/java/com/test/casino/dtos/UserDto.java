@@ -1,17 +1,16 @@
 package com.test.casino.dtos;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class UserDto implements Serializable {
-    private Integer id;
+    private Long id;
     private String username;
     private String password;
     private BigDecimal balance;

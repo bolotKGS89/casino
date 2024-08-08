@@ -39,9 +39,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getById(Integer id) {
+    public UserDto getById(Long id) {
 
-        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException("User not found"));
 
         return userMapper.toUserDto(
                 user
@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public UserDto updateBalance(Integer userId, BigDecimal amount) {
-        User user = userRepository.findById(userId)
+    public UserDto updateBalance(Long userId, BigDecimal amount) {
+        User user = userRepository.findById(Math.toIntExact(userId))
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         BigDecimal newBalance = user.getBalance().subtract(amount);

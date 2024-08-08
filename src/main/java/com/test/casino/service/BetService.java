@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface BetService {
     BetDto placeBet(BetDto betDto);
-    List<BetDto> getBets(Integer id);
+    List<BetDto> getBets(Long id);
 }

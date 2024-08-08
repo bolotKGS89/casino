@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public interface UserService {
 
     UserDto save(UserDto userDto);
-    UserDto getById(Integer id);
-    UserDto updateBalance(Integer userId, BigDecimal amount);
+    UserDto getById(Long id);
+    UserDto updateBalance(Long userId, BigDecimal amount);
     User login(UserDto userDto);
 }

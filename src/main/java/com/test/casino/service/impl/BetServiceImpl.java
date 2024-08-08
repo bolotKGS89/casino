@@ -4,7 +4,7 @@ import com.test.casino.dtos.BetDto;
 import com.test.casino.mapper.BetMapper;
 import com.test.casino.model.entity.Bet;
 import com.test.casino.repository.BetRepository;
-import com.test.casino.repository.UserRepository;
+
 import com.test.casino.service.BetService;
 import com.test.casino.service.UserService;
 import jakarta.transaction.Transactional;
@@ -17,9 +17,9 @@ import java.util.List;
 @AllArgsConstructor
 public class BetServiceImpl implements BetService {
 
-    private BetMapper betMapper;
-    private BetRepository betRepository;
-    private UserService userService;
+    private final BetMapper betMapper;
+    private final BetRepository betRepository;
+    private final UserService userService;
 
     @Override
     @Transactional
@@ -32,7 +32,7 @@ public class BetServiceImpl implements BetService {
     }
 
     @Override
-    public List<BetDto> getBets(Integer id) {
+    public List<BetDto> getBets(Long id) {
         List<Bet> bets = betRepository.findAllByUserId(id).orElseThrow(() -> new RuntimeException("Bets not found by user Id"));
 
         return betMapper.getBetDtoList(
