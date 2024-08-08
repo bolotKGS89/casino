@@ -1,4 +1,4 @@
-package com.test.casino;
+package com.test.casino.service;
 
 import com.test.casino.dtos.UserDto;
 import com.test.casino.mapper.UserMapper;
@@ -20,7 +20,7 @@ import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserServiceTest {
     @Mock
     private UserRepository userRepository;
@@ -52,7 +52,7 @@ public class UserServiceTest {
     void getUserByIdTest() {
         //when
         given(userRepository.findById(1))
-                .willReturn(Optional.ofNullable(user1));
+                .willReturn(Optional.of(user1));
         given(userMapper.toUserDto(user1)).willReturn(userDto1);
 
         UserDto user = userServiceImpl.getById(1L);
@@ -66,7 +66,7 @@ public class UserServiceTest {
     void getUserByIdTest_RuntimeException() {
         // when
         given(userRepository.findById(1))
-                .willReturn(Optional.ofNullable(user1));
+                .willReturn(Optional.of(user1));
         given(userMapper.toUserDto(user1)).willReturn(userDto1);
 
         // then
@@ -104,7 +104,7 @@ public class UserServiceTest {
     @Test
     void updateBalanceTest() {
         //when
-        given(userRepository.findById(1)).willReturn(Optional.ofNullable(user1));
+        given(userRepository.findById(1)).willReturn(Optional.of(user1));
         given(userRepository.save(user1)).willReturn(user1);
         userDto1.setBalance(BigDecimal.valueOf(80.00));
         given(userMapper.toUserDto(user1)).willReturn(userDto1);
@@ -118,7 +118,7 @@ public class UserServiceTest {
     @Test
     void updateBalanceTest_RuntimeException() {
         //when
-        given(userRepository.findById(1)).willReturn(Optional.ofNullable(user1));
+        given(userRepository.findById(1)).willReturn(Optional.of(user1));
 
         //then
         Exception exception = assertThrows(RuntimeException.class,
@@ -129,7 +129,7 @@ public class UserServiceTest {
     @Test
     void updateBalanceTest_IllegalArgumentException() {
         //when
-        given(userRepository.findById(1)).willReturn(Optional.ofNullable(user1));
+        given(userRepository.findById(1)).willReturn(Optional.of(user1));
 
         //then
         Exception exception = assertThrows(IllegalArgumentException.class,

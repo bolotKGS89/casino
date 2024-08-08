@@ -1,4 +1,4 @@
-package com.test.casino;
+package com.test.casino.service;
 
 import com.test.casino.dtos.BetDto;
 import com.test.casino.mapper.BetMapper;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BetServiceTest {
 
     @Mock
