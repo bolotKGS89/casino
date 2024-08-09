@@ -9,17 +9,22 @@ import com.test.casino.service.BetService;
 import com.test.casino.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class BetServiceImpl implements BetService {
 
-    private final BetMapper betMapper;
-    private final BetRepository betRepository;
-    private final UserService userService;
+    @Autowired
+    private BetMapper betMapper;
+
+    @Autowired
+    private BetRepository betRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     @Transactional
